@@ -68,6 +68,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-BFC及其应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/10/BFC及其应用/" class="article-date">
+  <time datetime="2017-07-10T05:43:41.000Z" itemprop="datePublished">2017-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/10/BFC及其应用/">BFC及其应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>何为BFC</p>
+<p>BFC（Block Formating Context 块级格式上下文）是CSS2.1规范中提出的一个概念，他是页面中独立的一块渲染区域。决定了这个区域内部元素的渲染以及与区域外部其他元素的渲染关系。它内部元素的渲染不会影响外部元素。</p>
+<p>BFC的布局规则</p>
+<p>内部的BOX会一个接一个的放置<br>box垂直方向的距离由margin决定，属于同一个BFC的相邻box会发生margin折叠<br>每个元素margin box的左边，与包含块的border box的左边相接触。即便存在浮动也是如此。<br>一个独立的容器，里面的元素不会影响外部。<br>容器的高度包含浮动元素的高度。<br>BFC的触发</p>
+<p>根元素<br>float属性不为none<br>position为absolute或者fixed<br>display为inline-block，table-cell，table-caption，flex，inline-flex<br>BFC的应用</p>
+<p>自适应两栏布局</p>
+<p><div class="wrapper"><br>    <div class="left"></div><br>    <div class="right"></div><br></div><br>.wapper{<br>    width:300px;<br>    background-color:red;<br>    position:absolute;<br>}<br>.left{<br>    float:left;<br>    width:100px;<br>    height:200px;<br>    background-color:black;<br>}<br>.right{<br>    height:200px;<br>    background-color:green;<br>    overflow:hidden;<br>}<br>根据BFC规则第三条：</p>
+<p>每个元素的margin box的左边与包含块的左边相接触，浮动也如此.<br>另外.right由于有overflow:hidden所以新生成了BFC。根据第四条:</p>
+<p>BFC的区域不会和float box重叠<br>这种以BFC特性的两栏布局虽然不需要和常见的流体布局一样关心固定栏的宽度，但是由于float的缘故，使得固定栏失去了流体特性，从而无法达到自动填满容器的布局。这里要注意float元素的破坏性和包裹性</p>
+<p>清除内部浮动<br>当设置一个浮动元素的父元素的CSS属性以来触发一个新的BFC的时候，内部元素因为浮动产生的高度塌陷问题就可以解决。这是因为BFC计算高度的时候浮动元素也会计算在内。<br>防止垂直margin重叠<br>与上一条同理。如果两个元素同属一个BFC那么在布局的时候相邻元素的margin会发生折叠，这个时候我们需要通过设置CSS属性来生成一个新的BFC避免margin折叠。常见的就是设置这个元素overflow:hidden.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/10/BFC及其应用/" data-id="cj4xq2y31000038cdwb3mmdmq" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-node模块与commonJS规范" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/10/node模块与commonJS规范/" class="article-date">
@@ -150,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/10/node模块与commonJS规范/" data-id="cj4xpzw0c0000zgcdwkuycp6e" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/07/10/node模块与commonJS规范/" data-id="cj4xq2y36000138cd2xl1a7wt" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -188,6 +234,10 @@
     <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/07/10/BFC及其应用/">BFC及其应用</a>
+          </li>
         
           <li>
             <a href="/2017/07/10/node模块与commonJS规范/">node模块与commonJS规范</a>
